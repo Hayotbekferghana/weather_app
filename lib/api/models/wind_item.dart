@@ -7,7 +7,7 @@ class WindItem {
   double speed;
 
   @JsonKey(defaultValue: 0, name: 'deg')
-  double deg;
+  int deg;
 
   WindItem({
     required this.deg,

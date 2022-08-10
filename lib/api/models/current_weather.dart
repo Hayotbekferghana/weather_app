@@ -7,10 +7,10 @@ import 'package:my_weather_app/api/models/sys_item.dart';
 import 'package:my_weather_app/api/models/weather_item.dart';
 import 'package:my_weather_app/api/models/wind_item.dart';
 
-part 'currently_weather.g.dart';
+part 'current_weather.g.dart';
 
 @JsonSerializable()
-class CurrentlyWeather {
+class CurrentWeather {
   @JsonKey(defaultValue: 0, name: 'id')
   int id;
 
@@ -44,13 +44,13 @@ class CurrentlyWeather {
   @JsonKey(name: 'coord')
   CoordItem coordItem;
 
-  @JsonKey(name: 'cloudsItem')
+  @JsonKey(name: 'clouds')
   CloudsItem cloudsItem;
 
-  @JsonKey(name: 'weather')
+  @JsonKey(defaultValue: [], name: 'weather')
   List<WeatherItem> weatherItem;
 
-  CurrentlyWeather({
+  CurrentWeather({
     required this.id,
     required this.weatherItem,
     required this.name,
@@ -66,10 +66,10 @@ class CurrentlyWeather {
     required this.cloudsItem,
   });
 
-  factory CurrentlyWeather.fromJson(Map<String, dynamic> json) =>
-      _$CurrentlyWeatherFromJson(json);
+  factory CurrentWeather.fromJson(Map<String, dynamic> json) =>
+      _$CurrentWeatherFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CurrentlyWeatherToJson(this);
+  Map<String, dynamic> toJson() => _$CurrentWeatherToJson(this);
 
   @override
   String toString() => """
@@ -86,3 +86,45 @@ class CurrentlyWeather {
     weatherItem: $weatherItem,   
   """;
 }
+
+Map e = {
+  "coord": {
+    "lon": 69.2163,
+    "lat": 41.2646,
+  },
+  "weather": [
+    {
+      "id": 801,
+      "main": "Clouds",
+      "description": "few clouds",
+      "icon": "02d",
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 303.12,
+    "feels_like": 301.47,
+    "temp_min": 303.12,
+    "temp_max": 303.12,
+    "pressure": 1010,
+    "humidity": 23
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 3.09,
+    "deg": 250,
+  },
+  "clouds": {"all": 20},
+  "dt": 1660108169,
+  "sys": {
+    "type": 1,
+    "id": 9016,
+    "country": "UZ",
+    "sunrise": 1660091220,
+    "sunset": 1660141812
+  },
+  "timezone": 18000,
+  "id": 1512569,
+  "name": "Tashkent",
+  "cod": 200
+};

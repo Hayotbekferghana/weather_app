@@ -19,6 +19,7 @@ class CoordItem {
 
   Map<String, dynamic> toJson() => _$CoordItemToJson(this);
 
+  @override
   String toString() => """
       lat: $lat,
       lon: $lon,

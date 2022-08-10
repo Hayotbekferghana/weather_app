@@ -7,7 +7,7 @@ part of 'wind_item.dart';
 // **************************************************************************
 
 WindItem _$WindItemFromJson(Map<String, dynamic> json) => WindItem(
-      deg: (json['deg'] as num?)?.toDouble() ?? 0,
+      deg: json['deg'] as int? ?? 0,
       speed: (json['speed'] as num?)?.toDouble() ?? 0.0,
     );
 
