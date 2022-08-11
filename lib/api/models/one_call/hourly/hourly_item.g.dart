@@ -23,12 +23,14 @@ HourlyItem _$HourlyItemFromJson(Map<String, dynamic> json) => HourlyItem(
                   (e) => HourlyWeatherItem.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
+      temp: (json['temp'] as num?)?.toDouble() ?? 0.0,
     );
 
 Map<String, dynamic> _$HourlyItemToJson(HourlyItem instance) =>
     <String, dynamic>{
       'dt': instance.dt,
       'pressure': instance.pressure,
+      'temp': instance.temp,
       'humidity': instance.humidity,
       'dew_point': instance.dew_point,
       'wind_speed': instance.wind_speed,

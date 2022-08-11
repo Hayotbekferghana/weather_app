@@ -3,13 +3,17 @@ import 'package:json_annotation/json_annotation.dart';
 import 'hourly_weather_item.dart';
 
 part 'hourly_item.g.dart';
+
 @JsonSerializable()
-class HourlyItem{
+class HourlyItem {
   @JsonKey(defaultValue: 0, name: 'dt')
   int dt;
 
   @JsonKey(defaultValue: 0.0, name: 'pressure')
   double pressure;
+
+  @JsonKey(defaultValue: 0.0, name: 'temp')
+  double temp;
 
   @JsonKey(defaultValue: 0.0, name: 'humidity')
   double humidity;
@@ -40,6 +44,7 @@ class HourlyItem{
 
   @JsonKey(defaultValue: [], name: 'weather')
   List<HourlyWeatherItem> weather;
+
   HourlyItem({
     required this.dt,
     required this.pressure,
@@ -52,7 +57,9 @@ class HourlyItem{
     required this.wind_gust,
     required this.wind_speed,
     required this.feels_like,
-    required this.weather,});
+    required this.weather,
+    required this.temp,
+  });
 
   factory HourlyItem.fromJson(Map<String, dynamic> json) =>
       _$HourlyItemFromJson(json);
@@ -72,6 +79,7 @@ class HourlyItem{
       pop: $pop,
       uvi: $uvi,
       feelsLikeItem: $feels_like
-      weather: $weather
+      weather: $weather,
+      temp: $temp,
       """;
 }
