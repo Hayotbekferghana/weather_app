@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   const BorderRadius.vertical(bottom: Radius.circular(36))),
         ),
         title: SizedBox(
-          width: 200,
+          width: double.infinity,
           height: 40,
           child: TextField(
             style: const TextStyle(color: Colors.white),
@@ -110,16 +110,22 @@ class _HomeScreenState extends State<HomeScreen> {
               fillColor: Colors.cyanAccent.withOpacity(0.4),
               labelText: "Enter region",
               labelStyle: const TextStyle(color: Colors.white),
-              prefixIcon: const Icon(
-                Icons.search,
-                color: Colors.white,
+              prefixIcon: IconButton(
+                icon: const Icon(
+                  Icons.search,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  update(searchText: searchController.text);
+                  searchController.clear();
+                },
               ),
-              focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(100),
-                  borderSide: const BorderSide(color: Colors.white)),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(100),
-                borderSide: const BorderSide(color: Colors.white),
+              focusedBorder: const OutlineInputBorder(
+                  borderRadius: BorderRadius.vertical(bottom: Radius.circular(36),top: Radius.circular(36)),
+                  borderSide: BorderSide(color: Colors.white)),
+              enabledBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.vertical(bottom: Radius.circular(20),top: Radius.circular(5)),
+                borderSide: BorderSide(color: Colors.white),
               ),
             ),
           ),
@@ -185,6 +191,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
+                          const SizedBox(
+                            height: 30,
+                          ),
                           Column(
                             children: [
                               Row(
@@ -303,6 +312,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ],
                           ),
+                          const SizedBox(
+                            height: 30,
+                          ),
                           SizedBox(
                             height: 100,
                             child: ListView(
@@ -318,7 +330,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         horizontal: 5),
                                     decoration: BoxDecoration(
                                       color: Colors.white.withOpacity(0.6),
-                                      borderRadius: BorderRadius.circular(36),
+                                      borderRadius: BorderRadius.vertical(top: Radius.circular(8),bottom: Radius.circular(50)),
                                     ),
                                     child: Column(
                                       // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -373,20 +385,21 @@ class _HomeScreenState extends State<HomeScreen> {
                           Container(
                             margin: const EdgeInsets.all(10),
                             width: double.infinity,
-                            height: 300,
+                            height: 289,
                             decoration: BoxDecoration(
                                 color: Colors.white.withAlpha(90),
                                 borderRadius: BorderRadius.circular(10)),
                             child: ListView.builder(
-                                physics: BouncingScrollPhysics(),
+                                physics: const BouncingScrollPhysics(),
                                 itemCount: oneCallData.dailyItem.length,
                                 itemBuilder: (ctx, index) {
                                   return Container(
                                       height: 50,
-                                      margin: EdgeInsets.all(2),
-                                      decoration: BoxDecoration(
-                                        border: Border(bottom: BorderSide(color: Colors.white38))
-                                      ),
+                                      margin: const EdgeInsets.all(2),
+                                      decoration: const BoxDecoration(
+                                          border: Border(
+                                              bottom: BorderSide(
+                                                  color: Colors.white38))),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceAround,
@@ -397,7 +410,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     .width /
                                                 3,
                                             child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
@@ -421,10 +435,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                           ),
                                           SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                3,
                                             child: Image.network(
                                                 "http://openweathermap.org/img/wn/${oneCallData.dailyItem[index].weather[0].icon}@2x.png"),
                                           ),
                                           SizedBox(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                5,
                                             child: Row(
                                               children: [
                                                 Text(oneCallData
