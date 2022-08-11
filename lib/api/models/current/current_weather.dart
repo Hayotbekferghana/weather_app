@@ -1,11 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:my_weather_app/api/models/clouds_item.dart';
-import 'package:my_weather_app/api/models/coord_item.dart';
-import 'package:my_weather_app/api/models/main_item.dart';
-import 'package:my_weather_app/api/models/sys_item.dart';
-import 'package:my_weather_app/api/models/weather_item.dart';
-import 'package:my_weather_app/api/models/wind_item.dart';
+import 'package:my_weather_app/api/models/current/clouds_item.dart';
+import 'package:my_weather_app/api/models/current/coord_item.dart';
+import 'package:my_weather_app/api/models/current/main_item.dart';
+import 'package:my_weather_app/api/models/current/sys_item.dart';
+import 'package:my_weather_app/api/models/current/weather_item.dart';
+import 'package:my_weather_app/api/models/current/wind_item.dart';
 
 part 'current_weather.g.dart';
 

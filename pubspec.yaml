@@ -23,6 +23,10 @@ dependencies:
   simple_gradient_text: ^1.2.3
   shimmer_animation: ^2.1.0+1
   lottie: ^1.4.1
+  easy_localization: ^3.0.1
+  intl: ^0.17.0
+  gradient_text: ^1.0.2
+  gradient_textfield: ^0.0.1
 
 
 dev_dependencies:
